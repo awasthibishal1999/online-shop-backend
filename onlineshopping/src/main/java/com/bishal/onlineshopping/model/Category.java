@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Table(name="category")
 public class Category implements Serializable{
 
         public Category(){}
@@ -24,37 +25,16 @@ public class Category implements Serializable{
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
+   
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
+   
+   
 
 
-
-    public Category(Long id, String name, String description, String imageUrl, boolean isActive) {
+    public Category(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.isActive = isActive;
+       
     }
 
 
@@ -65,9 +45,7 @@ public class Category implements Serializable{
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                "isActive=" + isActive +
+               
                 '}';
     }
 
@@ -76,11 +54,7 @@ public class Category implements Serializable{
     @Column(nullable = false)
     private Long id;
     private String name;
-    private String description;
-    private String imageUrl;
-    @Column(name="is_active")
-    private boolean isActive=true;
-
+    
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "category")
     private Set<Product> product;
 

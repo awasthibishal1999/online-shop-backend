@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name="product")
 public class Product implements Serializable {
 
     public Product(){
@@ -17,14 +18,6 @@ public class Product implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getName() {
@@ -68,38 +61,16 @@ public class Product implements Serializable {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        this.active = active;
     }
 
 
 
-    public Long getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(Long supplierId) {
-        this.supplierId = supplierId;
-    }
-
-    public int getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(int purchases) {
-        this.purchases = purchases;
-    }
-
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
-    }
+   
     public String getImageUrl() {
         return imageUrl;
     }
@@ -111,19 +82,17 @@ public class Product implements Serializable {
 
 
     public Product(Long id, String code, String name, String brand, String description, String unitPrice,
-                   int quantity, boolean isActive, Long supplierId, int purchases, int views, String imagerUrl) {
+                   int quantity, boolean active, String imagerUrl) {
         this.id = id;
-        this.code = code;
+       
         this.name = name;
         this.brand = brand;
         this.description = description;
         this.unitPrice = unitPrice;
         this.quantity = quantity;
-        this.isActive = isActive;
+        this.active =active;
 
-        this.supplierId = supplierId;
-        this.purchases = purchases;
-        this.views = views;
+       
         this.imageUrl=imagerUrl;
     }
 
@@ -132,17 +101,14 @@ public class Product implements Serializable {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", code='" + code + '\'' +
+              
                 ", name='" + name + '\'' +
                 ", brand='" + brand + '\'' +
                 ", description='" + description + '\'' +
                 ", unitPrice='" + unitPrice + '\'' +
                 ", quantity=" + quantity +
-                ", isActive=" + isActive +
-                ", supplierId=" + supplierId +
-                ", purchases=" + purchases +
-                ", views=" + views +
-                ", imageUrl=" + imageUrl+
+                ", isActive=" + active +
+               ", imageUrl=" + imageUrl+
                 '}';
     }
 
@@ -150,21 +116,14 @@ public class Product implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    @Column(nullable = false)
-    private String code;
     private String name;
     private String brand;
     private String description;
     @Column(name="unit_price")
     private String unitPrice;
     private int quantity;
-    @Column(name="is_active")
-    private boolean isActive;
-    @Column(name="supplier_id")
-    private Long supplierId;
-    private int purchases;
-    private int views;
-    @Column(name="image_Url")
+     private boolean active;
+    @Column(name="image_url")
     private String imageUrl;
 
     @ManyToOne
