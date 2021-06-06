@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="product")
-public class Product implements Serializable {
+public class Product {
 
     public Product(){
 
