@@ -1,11 +1,14 @@
 package com.bishal.onlineshopping.model;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+// This is Pojo Class
 
 @Entity
 @Table(name="user")
